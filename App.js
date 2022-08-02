@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 
 import {store, persistor} from './src/redux';
-import ToDo from './src/ToDo';
+import {ToDo} from './src';
 
 const App = () => {
   return (
