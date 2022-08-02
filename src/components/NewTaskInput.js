@@ -17,7 +17,7 @@ const NewTaskInput = ({defaultValue, handleTextChange, handleAddNewTask}) => {
           paddingHorizontal: 10,
           marginHorizontal: 16,
           borderRadius: 12,
-          marginBottom: 16,
+          marginVertical: 10,
         },
       ])}>
       <TextInput

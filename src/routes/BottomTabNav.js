@@ -13,6 +13,7 @@ const BottomTabNav = () => {
     <BottomTab.Navigator
       screenOptions={({route}) => ({
         headerShown: false,
+        tabBarHideOnKeyboard: true,
         tabBarIcon: ({focused, size}) => {
           let iconName;
 

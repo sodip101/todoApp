@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Keyboard} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Keyboard, View, Platform} from 'react-native';
 
 import {useSelector, useDispatch} from 'react-redux';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -37,6 +37,22 @@ const ActiveTasksScreen = () => {
     }
   };
 
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', e => {
+      setKeyboardHeight(e?.endCoordinates?.height || 0);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardHeight(0);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
+
   return (
     <SafeAreaView style={CommonStyles.flexRoot}>
       <ActiveTasks
@@ -51,6 +67,8 @@ const ActiveTasksScreen = () => {
         handleAddNewTask={addAnewTask}
         handleTextChange={handleTextChange}
       />
+
+      {Platform.OS === 'ios' && <View style={{height: keyboardHeight}} />}
     </SafeAreaView>
   );
 };
