@@ -13,6 +13,9 @@ const CommonStyles = StyleSheet.create({
   justifyContentCenter: {
     justifyContent: 'center',
   },
+  justifyContentBetween: {
+    justifyContent: 'space-between',
+  },
 });
 
 export default CommonStyles;

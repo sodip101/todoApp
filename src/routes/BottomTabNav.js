@@ -3,6 +3,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {ActiveTasksScreen, CompletedTasksScreen} from '../screens';
+import {Colors} from '../constants';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -11,7 +12,7 @@ const BottomTabNav = () => {
     <BottomTab.Navigator
       screenOptions={({route}) => ({
         headerShown: false,
-        tabBarIcon: ({focused, color, size}) => {
+        tabBarIcon: ({focused, size}) => {
           let iconName;
 
           if (route.name === 'Completed') {
@@ -22,9 +23,15 @@ const BottomTabNav = () => {
             iconName = focused ? 'add-circle-outline' : 'add-circle';
           }
 
-          return <Icon name={iconName} size={size} color={color} />;
+          return (
+            <Icon
+              name={iconName}
+              size={size}
+              color={focused ? Colors.primary : 'gray'}
+            />
+          );
         },
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: 'gray',
       })}>
       <BottomTab.Screen name="Active" component={ActiveTasksScreen} />
