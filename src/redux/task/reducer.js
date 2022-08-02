@@ -7,16 +7,7 @@ const INITIAL_STATE = {
       dateAdded: Date.now(),
     },
   ],
-  completedTasks: [
-    {
-      text: 'Example Complete Task 1',
-      dateAdded: Date.now(),
-    },
-    {
-      text: 'Example Complete Task 2',
-      dateAdded: Date.now(),
-    },
-  ],
+  completedTasks: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
